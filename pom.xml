@@ -4,6 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>demo</name>
+
     <groupId>com.demo</groupId>
     <artifactId>basic-architecture</artifactId>
     <packaging>pom</packaging>
@@ -39,33 +41,28 @@
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
-            <!-- spring boot -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>1.8.6</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <!-- 公用的基础依赖 -->
     <dependencies>
+        <!-- spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -73,30 +70,6 @@
             <version>${lombok.version}</version>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>uat</id>
-            <properties>
-                <env>uat</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>pre</id>
-            <properties>
-                <env>pre</env>
-            </properties>
-        </profile>
-        <profile>
-            <id>release</id>
-            <properties>
-                <env>release</env>
-            </properties>
-        </profile>
-    </profiles>
 
     <build>
         <plugins>
@@ -116,14 +89,5 @@
                 </executions>
             </plugin>
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/config/${env}</directory>
-            </resource>
-        </resources>
     </build>
 </project>
