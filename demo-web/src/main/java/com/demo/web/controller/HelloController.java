@@ -1,9 +1,11 @@
 package com.demo.web.controller;
 
+import com.demo.common.dto.Response;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  * @author jiangtao
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("sayHello")
-    public String sayHello() {
+    public Response<String> sayHello() {
         System.out.println("hello");
-        return "hello";
+        return Response.ok("hello");
     }
 }

@@ -20,6 +20,7 @@
         <module>demo-dal</module>
         <module>demo-web</module>
         <module>demo-boot</module>
+        <module>demo-common</module>
     </modules>
 
     <!--<parent>
@@ -47,6 +48,13 @@
 
     <!-- 公用的基础依赖 -->
     <dependencies>
+        <!-- 基础公用模块 -->
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>demo-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- spring boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
